@@ -22,7 +22,7 @@
       <TextArea fx:id="taDescripcion" layoutX="34.0" layoutY="282.0" prefHeight="150.0" prefWidth="320.0" wrapText="true" />
       <ComboBox fx:id="cmbClientes" layoutX="371.0" layoutY="197.0" prefHeight="35.0" prefWidth="284.0" />
       <ComboBox fx:id="cmbFacturas" layoutX="664.0" layoutY="197.0" prefHeight="35.0" prefWidth="274.0" />
-      <TableView fx:id="tblTickets" layoutX="382.0" layoutY="282.0" prefHeight="416.0" prefWidth="779.0">
+      <TableView fx:id="tblTickets" layoutX="382.0" layoutY="282.0" onMouseClicked="#cargarDatosEditar" prefHeight="416.0" prefWidth="779.0">
         <columns>
           <TableColumn fx:id="colTicketId" prefWidth="75.0" text="TicketId" />
           <TableColumn fx:id="colDescripcion" prefWidth="288.79998779296875" text="Descripcion" />
@@ -42,5 +42,10 @@
          </font>
       </Button>
       <ComboBox fx:id="cmbEstatus" layoutX="34.0" layoutY="470.0" prefHeight="35.0" prefWidth="284.0" />
+      <Button fx:id="btnVaciar" layoutX="180.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="39.0" prefWidth="120.0" style="-fx-background-radius: 10;" text="Vaciar Form">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
