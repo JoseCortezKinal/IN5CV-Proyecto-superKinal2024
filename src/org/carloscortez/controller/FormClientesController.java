@@ -14,11 +14,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import org.carloscortez.dao.Conexion;
 import org.carloscortez.dto.ClienteDTO;
 import org.carloscortez.model.Cliente;
 import org.carloscortez.system.Main;
+import org.carloscortez.utils.SuperKinalAlert;
 
 /**
  * FXML Controller class
@@ -55,12 +57,27 @@ public class FormClientesController implements Initializable {
             ClienteDTO.getClienteDTO().setCliente(null);
         }else if(event.getSource() == btnGuardar){
             if(op == 1){
-                agregarCliente();
-                stage.menuClientesView();
+                if(!tfNombre.getText().equals("") && !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    agregarCliente();
+                    SuperKinalAlert.getInstance().mostrarAlertaInfo(401);
+                    stage.menuClientesView();
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertaInfo(400);
+                    tfNombre.requestFocus();
+                    return;
+                }
             }else if(op == 2){
-                editarCliente();
-                ClienteDTO.getClienteDTO().setCliente(null);
-                stage.menuClientesView();
+                if(!tfNombre.getText().equals("") && !tfApellido.getText().equals("") && !tfDireccion.getText().equals("")){
+                    if(SuperKinalAlert.getInstance().mostrarAlertaConfirmacion(106).get() == ButtonType.OK){
+                        editarCliente();
+                        ClienteDTO.getClienteDTO().setCliente(null);
+                        stage.menuClientesView();
+                    }
+                }else{
+                    SuperKinalAlert.getInstance().mostrarAlertaInfo(400);
+                    tfNombre.requestFocus();
+                    return;
+                }  
             }
         }
     }

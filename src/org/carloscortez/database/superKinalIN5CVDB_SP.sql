@@ -549,7 +549,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-
 -- *********************** CRUD TicketSoporte ************************** --
 -- AGREGAR
 DELIMITER $$
